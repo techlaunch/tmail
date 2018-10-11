@@ -18,9 +18,7 @@ class HomeScreen extends Component {
   render () {
     return (
       <div>
-        <NavBar 
-          
-        />
+        <NavBar />
         <SideNav 
           open={this.state.open} 
           onDrawerOpen={this.onDrawerOpen}

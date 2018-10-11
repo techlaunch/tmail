@@ -16,7 +16,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Settings from '@material-ui/icons/Settings';
 import Avatar from '../Avatar';
 import { server } from '../../api';
 
@@ -39,6 +38,8 @@ const styles = theme => ({
   },
   search: {
     position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
     borderRadius: theme.shape.borderRadius,
     backgroundColor: fade(theme.palette.common.white, 0.15),
     '&:hover': {
@@ -72,12 +73,16 @@ const styles = theme => ({
     paddingLeft: theme.spacing.unit * 10,
     transition: theme.transitions.create('width'),
     width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: 200,
+    [theme.breakpoints.up('sm')]: {
+      width: 120,
+      '&:focus': {
+        width: 200,
+      },
     },
   },
   sectionDesktop: {
     display: 'none',
+    marginRight: '-12px',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
     },
@@ -183,20 +188,20 @@ class PrimarySearchAppBar extends React.Component {
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               Hi {this.props.user.name.split(' ')[0]}!
             </Typography>
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                />
+              </div>
               <IconButton color="inherit">
                 <Badge className={classes.margin} badgeContent={4} color="secondary">
                   <MailIcon />
@@ -213,7 +218,7 @@ class PrimarySearchAppBar extends React.Component {
                 onClick={this.handleProfileMenuOpen}
                 color="inherit"
               >
-                <Settings />
+                <MoreIcon />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>

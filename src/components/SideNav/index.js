@@ -3,17 +3,20 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import List from '@material-ui/core/List';
+import { mailFolderListItems, otherMailFolderListItems } from './ListIcons';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 440,
+    height: 'calc(100vh - 64px)',
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -72,27 +75,33 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
+    overflowY: 'auto',
+    overflowX: 'hidden'
   },
 });
 
 class SideNav extends React.Component {
   render() {
-    const { classes, theme } = this.props;
+    const { classes, open } = this.props;
 
     return (
       <div className={classes.root}>
         <Drawer
           variant="permanent"
           classes={{
-            paper: classNames(classes.drawerPaper, !this.props.open && classes.drawerPaperClose),
+            paper: classNames(classes.drawerPaper, !open && classes.drawerPaperClose),
           }}
-          open={this.props.open}
+          open={open}
         >
           <div className={classes.toolbar}>
-            <IconButton onClick={() => this.props.open ? this.props.onDrawerClose() : this.props.onDrawerOpen()}>
-              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            <IconButton onClick={() => open ? this.props.onDrawerClose() : this.props.onDrawerOpen()}>
+              { open ? <ChevronLeftIcon /> : <ChevronRightIcon /> }
             </IconButton>
           </div>
+          <Divider />
+          <List>{mailFolderListItems}</List>
+          <Divider />
+          <List>{otherMailFolderListItems}</List>
         </Drawer>
         <main className={classes.content}>
           <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography>
