@@ -1,9 +1,34 @@
-import React from "react";
+import React, { Component } from "react";
+import NavBar from '../../components/NavBar';
+import SideNav from '../../components/SideNav';
 
-const HomeScreen = () => (
-  <div className="screen">
-    Home Screen
-  </div>
-);
+class HomeScreen extends Component {
+  state = {
+    open: false,
+  }
+
+  onDrawerOpen = () => {
+    this.setState({ open: true });
+  };
+
+  onDrawerClose = () => {
+    this.setState({ open: false });
+  };
+
+  render () {
+    return (
+      <div>
+        <NavBar 
+          
+        />
+        <SideNav 
+          open={this.state.open} 
+          onDrawerOpen={this.onDrawerOpen}
+          onDrawerClose={this.onDrawerClose}
+        />
+      </div>
+    );
+  }
+}
 
 export default HomeScreen;

@@ -37,7 +37,11 @@ export default class Avatar extends Component {
 
   render() {
     return (
-      <div style={{ flex: '0, 0, ' + this.props.width}}>
+      <div style={{ 
+        flex: '0, 0, ' + this.props.width,
+        display: 'flex',
+        alignItems: 'center'
+      }}>
         <Img
           alt="Avatar"
           src={this.props.src + this.state.cacheBreaker}
