@@ -1,0 +1,31 @@
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #2196f3;
+
+  .form-container {
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px; 
+    display: flex;
+    flex-direction: column;
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .links-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 35px;
+
+      a {
+        margin: 8px;
+        color: #000;
+      }
+    }
+  }
+}

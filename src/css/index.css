@@ -1,0 +1,104 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif; }
+
+* {
+  box-sizing: border-box; }
+
+a {
+  text-decoration: none; }
+
+.text-white {
+  color: #FFF; }
+
+.loading-indicator {
+  z-index: 999999;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2196f3; }
+  .loading-indicator div {
+    height: 25px;
+    width: 15px;
+    background-color: #fff;
+    margin: 5px;
+    border-radius: 10px;
+    animation: loading 800ms infinite alternate-reverse; }
+  .loading-indicator div:nth-child(2) {
+    animation-delay: 200ms; }
+  .loading-indicator div:nth-child(3) {
+    animation-delay: 400ms; }
+  .loading-indicator div:nth-child(4) {
+    animation-delay: 600ms; }
+
+.network-activity-indicator {
+  z-index: 999999;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .network-activity-indicator div {
+    height: 15px;
+    width: 10px;
+    background-color: #000;
+    margin: 3px;
+    border-radius: 5px;
+    animation: indicator 900ms ease infinite alternate-reverse; }
+  .network-activity-indicator div:nth-child(2) {
+    animation-delay: 300ms; }
+  .network-activity-indicator div:nth-child(3) {
+    animation-delay: 600ms; }
+
+@keyframes loading {
+  from {
+    height: 25px; }
+  to {
+    height: 65px; } }
+@keyframes indicator {
+  from {
+    height: 15px; }
+  to {
+    height: 45px; } }
+.cool-scroll-bar::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 10px; }
+
+.cool-scroll-bar::-webkit-scrollbar {
+  width: 6px;
+  background-color: rgba(0, 0, 0, 0); }
+
+.cool-scroll-bar::-webkit-scrollbar-thumb {
+  background-color: #f50057;
+  border-radius: 10px; }
+
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #2196f3; }
+  .screen .form-container {
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    display: flex;
+    flex-direction: column; }
+    .screen .form-container .logo-container {
+      display: flex;
+      justify-content: center; }
+    .screen .form-container .links-container {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 35px; }
+      .screen .form-container .links-container a {
+        margin: 8px;
+        color: #000; }
+
+/*# sourceMappingURL=index.css.map */

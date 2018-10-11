@@ -1,0 +1,28 @@
+$thin-font: 'Montserrat-thin', sans-serif;
+$light-font: 'Montserrat-Light', sans-serif;
+$regular-font: 'Montserrat-Regular', sans-serif;
+$bold-font: 'Montserrat-Bold', sans-serif;
+$black-font: 'Montserrat-Black', sans-serif;
+
+$primary-color: #2196f3;
+$secondary-color: #fff;
+$accent-color: #ffeb3b;
+$text-color: #000;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-white {
+  color: #FFF;
+}
