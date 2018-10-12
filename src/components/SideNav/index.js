@@ -78,7 +78,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.default,
     overflowY: 'auto',
     overflowX: 'hidden',
-    display: 'flex'
+    display: 'flex',
+    minWidth: '300px'
   },
 });
 

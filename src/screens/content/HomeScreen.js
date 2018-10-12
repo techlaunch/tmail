@@ -29,7 +29,7 @@ class HomeScreen extends Component {
 
     return (
       <div style={{
-        minWidth: '400px'
+        minWidth: '350px'
       }}>
         <NavBar />
         <SideNav 

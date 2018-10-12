@@ -7,8 +7,6 @@ const EmailForm = (props) => {
   return (
     <div style={{
       flex: 1,
-      display: 'flex',
-      flexDirection: 'column'
     }}>
       <OutlinedInput
         id="to"
