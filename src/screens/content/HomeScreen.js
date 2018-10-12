@@ -63,7 +63,8 @@ class HomeScreen extends Component {
                         color: '#FFF',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        position: 'absolute'
                       }}>
                         <MdModeEdit size={20} />
                       </Link>
@@ -80,7 +81,8 @@ class HomeScreen extends Component {
                           color: '#FFF',
                           display: 'flex',
                           alignItems: 'center',
-                          justifyContent: 'center'
+                          justifyContent: 'center',
+                          position: 'absolute'
                         }}>
                           <MdDelete size={20} />
                         </Link>
