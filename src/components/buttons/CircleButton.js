@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { IoIosSend } from 'react-icons/io';
 
 const styles = theme => ({
   button: {
@@ -14,7 +13,7 @@ const styles = theme => ({
 });
 
 const CircleButton = (props) => {
-  const { classes, onSendMessage } = props;
+  const { classes, onClick, style, children } = props;
 
   return (
     <div>
@@ -23,9 +22,10 @@ const CircleButton = (props) => {
         color={"secondary"}
         aria-label="Add" 
         className={classes.button}
-        onClick={onSendMessage}  
+        onClick={onClick} 
+        style={style} 
       >
-        <IoIosSend />
+        {children} 
       </Button>
     </div>
   );

@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -69,14 +68,17 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: '0 8px',
+    height: '70px',
+    
     ...theme.mixins.toolbar,
   },
   content: {
+    position: 'relative',
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
     overflowY: 'auto',
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    display: 'flex'
   },
 });
 
@@ -104,7 +106,7 @@ class SideNav extends React.Component {
           <List>{otherMailFolderListItems}</List>
         </Drawer>
         <main className={classes.content}>
-          <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography>
+          {this.props.children}
         </main>
       </div>
     );

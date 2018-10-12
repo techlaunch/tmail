@@ -19,17 +19,17 @@ const Routes = (props) => {
     <Router>
       <div>
         <Switch>
-          <Route exact path="/sign-in" render={(props) => !user ? <SignInScreen {...props}/> : <Redirect to="/home" />} />
-          <Route exact path="/sign-up" render={(props) => !user ? <SignUpScreen {...props} /> : <Redirect to="/home" />} />
-          <Route exact path="/forgot-password" render={(props) => !user ? <ForgotPasswordScreen {...props} /> : <Redirect to="/home" />} />
-          <Route exact path="/reset-password" render={(props) => !user ? <ResetPasswordScreen {...props} /> : <Redirect to="/home" />} />
-          <Route exact path="/awaiting-email-confirmation" render={(props) => !user ? <WaitingEmailConfirmationScreen {...props} /> : <Redirect to="/home" />} />
-          <Route exact path="/awaiting-email-verification" render={(props) => !user ? <WaitingEmailVerificationScreen {...props} /> : <Redirect to="/home" />} />
+          <Route exact path="/sign-in" render={(props) => !user ? <SignInScreen {...props}/> : <Redirect to="/home/emails" />} />
+          <Route exact path="/sign-up" render={(props) => !user ? <SignUpScreen {...props} /> : <Redirect to="/home/emails" />} />
+          <Route exact path="/forgot-password" render={(props) => !user ? <ForgotPasswordScreen {...props} /> : <Redirect to="/home/emails" />} />
+          <Route exact path="/reset-password" render={(props) => !user ? <ResetPasswordScreen {...props} /> : <Redirect to="/home/emails" />} />
+          <Route exact path="/awaiting-email-confirmation" render={(props) => !user ? <WaitingEmailConfirmationScreen {...props} /> : <Redirect to="/home/emails" />} />
+          <Route exact path="/awaiting-email-verification" render={(props) => !user ? <WaitingEmailVerificationScreen {...props} /> : <Redirect to="/home/emails" />} />
 
 
-          <Route exact path="/home" render={(props) => user ? <HomeScreen {...props} /> : <Redirect to="/sign-in" />} />
+          <Route path="/home/:screen" render={(props) => user ? <HomeScreen {...props} /> : <Redirect to="/sign-in" />} />
           
-          <Route path="/" render={(props) => user ? <Redirect to="/home" /> : <Redirect to="/sign-in" /> }/>
+          <Route path="/" render={(props) => user ? <Redirect to="/home/emails" /> : <Redirect to="/sign-in" /> }/>
         </Switch>
       </div>
     </Router>

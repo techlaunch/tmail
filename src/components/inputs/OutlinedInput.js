@@ -22,7 +22,10 @@ const OutlinedInput = (props) => {
     label,
     id,
     placeholder,
-    type
+    type,
+    multiline,
+    rowsMax,
+    rows
   } = props;
 
   return (
@@ -30,10 +33,13 @@ const OutlinedInput = (props) => {
       <TextField
         id={id}
         label={label}
+        multiline={multiline}
+        rows={rows}
+        rowsMax={rowsMax}
         type={type || 'text'}
         style={{ 
           margin: 8,
-          flex: 1
+          flex: 1,
         }}
         placeholder={placeholder}
         margin="normal"
