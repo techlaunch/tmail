@@ -1,9 +1,10 @@
 export default class Email {
   constructor() {
-    this.data = {
-      subject: '',
-      message: '',
-      receiver: ''
-    }
+    this.subject = '';
+    this.message = '';
+    this.receiver = {
+      email: ''
+    };
+    this.attachments = [];
   }
 }

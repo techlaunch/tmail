@@ -2,8 +2,8 @@ import React from 'react';
 import { OutlinedInput } from '../inputs';
 
 const EmailForm = (props) => {
-  const { form } = props;
-
+  const { form, onEmailFormChange } = props;
+  console.log(props);
   return (
     <div style={{
       flex: 1,
@@ -13,8 +13,14 @@ const EmailForm = (props) => {
         type="text"
         label="To"
         placeholder="Enter Destination Email"
-        value={form.receiver}
-        onChange={(e) => console.log('receiver email')}
+        value={form.receiver.email}
+        onChange={(e) => onEmailFormChange({
+          ...form,
+          receiver: {
+            ...form.receiver,
+            email: e.target.value
+          }
+        })}
       />
 
       <OutlinedInput
@@ -22,8 +28,11 @@ const EmailForm = (props) => {
         type="text"
         label="Subject"
         placeholder="Enter A Subject"
-        value={form.receiver}
-        onChange={(e) => console.log('email subject')}
+        value={form.subject}
+        onChange={(e) => onEmailFormChange({
+          ...form,
+          subject: e.target.value
+        })}
       />
 
       <OutlinedInput
@@ -33,8 +42,11 @@ const EmailForm = (props) => {
         label="Message"
         multiline
         placeholder="Enter A Message"
-        value={form.receiver}
-        onChange={(e) => console.log('email message')}
+        value={form.message}
+        onChange={(e) => onEmailFormChange({
+          ...form,
+          message: e.target.value
+        })}
       />
     
     </div>

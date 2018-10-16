@@ -10,8 +10,6 @@ import Typography from '@material-ui/core/Typography';
 
 import moment from 'moment';
 
-import fakeEmails from './fake-emails';
-
 const styles = theme => ({
   root: {
     width: '100%',
@@ -23,12 +21,13 @@ const styles = theme => ({
 });
 
 function EmailList(props) {
-  const { classes } = props;
+  const { classes, emails, user } = props;
+  
   return (
     <div className={classes.root}>
       <List className={classes.list}>
         {
-          fakeEmails.map(email => (
+          emails.reduce((acc, email) => email.receiver.email === user.email ? acc.concat([
             <ListItem key={email._id} button style={{
               display: 'flex',
               justifyContent: 'flex-start',
@@ -43,7 +42,7 @@ function EmailList(props) {
                 </Avatar>
                 <ListItemText primary={email.sender.email} secondary={moment(email.date).format('MM/DD/YYYY hh:mm A')} />
               </div>
-              
+
               <div style={{
                 display: 'flex',
               }}>
@@ -54,7 +53,7 @@ function EmailList(props) {
                 </Typography>
               </div>
             </ListItem>
-          ))
+          ]) : acc, [])
         }
       </List>
     </div>

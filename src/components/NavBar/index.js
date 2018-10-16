@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
+// import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Avatar from '../Avatar';
 import { server } from '../../api';
@@ -95,7 +95,7 @@ const styles = theme => ({
 
 class NavBar extends React.Component {
   render() {
-    const { classes } = this.props;
+    const { classes, unread } = this.props;
 
     return (
       <div className={classes.root}>
@@ -130,15 +130,15 @@ class NavBar extends React.Component {
                 />
               </div>
               <IconButton color="inherit">
-                <Badge className={classes.margin} badgeContent={4} color="secondary">
+                <Badge className={classes.margin} badgeContent={unread} color="secondary">
                   <MailIcon />
                 </Badge>
               </IconButton>
-              <IconButton color="inherit">
+              {/* <IconButton color="inherit">
                 <Badge className={classes.margin} badgeContent={17} color="secondary">
                   <NotificationsIcon />
                 </Badge>
-              </IconButton>
+              </IconButton> */}
               <IconButton
                 aria-owns='material-appbar'
                 aria-haspopup="true"
@@ -166,7 +166,8 @@ NavBar.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    user: state.user
+    user: state.user,
+    emails: state.emails
   }
 }
 

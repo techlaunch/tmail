@@ -43,17 +43,17 @@ const EMAILS = (dispatch) => ({
       });
   },
 
-  onEmailFormChange: (email) => dispatch({
+  onEmailFormChange: (form) => dispatch({
     type: 'ON_EMAIL_FORM_CHANGE',
-    email: email
+    form: form
   }),
 
-  onSendEmail: (email) => {
-    if (!validate.email(email.to)) {
+  onSendEmail: (form) => {
+    if (!validate.email(form.receiver.email)) {
       return alert.show()('Invalid email. Please enter a valid destination email', 'info');
     }
 
-    if (!email.message) {
+    if (!form.message) {
       return alert.show()('No message entered. Please write a message before sending the email', 'info');
     }
 
@@ -64,18 +64,20 @@ const EMAILS = (dispatch) => ({
         'Content-Type': 'application/json',
       },
       credentials: "include",
-      body: JSON.stringify(email)
+      body: JSON.stringify(form)
     })
       .then(response => response.json())
       .then(response => {
         if (response.success) {
           dispatch({
             type: 'ON_ADD_EMAIL',
-            user: response.email
+            email: response.email
           })
+          return true;
         }
         else {
           alert.show()(response.message, 'info');
+          return false;
         }
       })
       .catch(err => {

@@ -24,14 +24,26 @@ class HomeScreen extends Component {
     this.setState({ open: false });
   };
 
+  onSendEmail = async () => {
+    const success = await this.props.onSendEmail(this.props.email.form);
+
+    if (success) {
+      this.props.history.replace('/home/emails');
+    }
+  }
+
+  componentDidMount() {
+    this.props.onFetchingEmails();
+  }
+
   render () {
-    const { match } = this.props;
+    const { match, email, onEmailFormChange, user } = this.props;
 
     return (
       <div style={{
         minWidth: '350px'
       }}>
-        <NavBar />
+        <NavBar unread={email.list.reduce((acc, email) => !email.read && email.receiver.email === user.email ? ++acc : acc, 0)}/>
         <SideNav 
           open={this.state.open} 
           onDrawerOpen={this.onDrawerOpen}
@@ -41,9 +53,9 @@ class HomeScreen extends Component {
             (() => {
               switch (match.params.screen) {
                 case 'emails':
-                  return <EmailList />
+                  return <EmailList user={user} emails={email.list}/>
                 case 'new-email':
-                  return <EmailForm form={this.props.email.form}/>
+                  return <EmailForm onEmailFormChange={onEmailFormChange} form={this.props.email.form}/>
                 default:
                   return <Redirect to="/home/emails" />
               }
@@ -73,7 +85,7 @@ class HomeScreen extends Component {
                 case 'new-email':
                   return (
                     <div>
-                      <FloatingButton position='bottom-left'>
+                      <FloatingButton position='bottom-left' onClick={()=> onEmailFormChange(null)}>
                         <Link to="/home/emails" style={{
                           height: '100%',
                           width: '100%',
@@ -88,7 +100,7 @@ class HomeScreen extends Component {
                         </Link>
                       </FloatingButton>
 
-                      <FloatingButton>
+                      <FloatingButton onClick={this.onSendEmail}>
                         <MdSend size={20} />
                       </FloatingButton>
                     </div>
