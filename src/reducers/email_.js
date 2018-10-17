@@ -12,7 +12,10 @@ const onFetchingEmails = (state, action) => ({
 
 const onEmailFormChange = (state, action) => ({
   ...state,
-  form: action.form || (new Email())
+  form: {
+    ...(new Email()),
+    ...action.form 
+  }
 });
 
 const onAddEmail = (state, action) => ({

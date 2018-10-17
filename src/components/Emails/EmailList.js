@@ -20,15 +20,15 @@ const styles = theme => ({
   }
 });
 
-function EmailList(props) {
-  const { classes, emails, user } = props;
-  
+const EmailList = (props) => {
+  const { classes, emails, user, onReadEmail } = props;
+
   return (
     <div className={classes.root}>
       <List className={classes.list}>
         {
           emails.reduce((acc, email) => email.receiver.email === user.email ? acc.concat([
-            <ListItem key={email._id} button style={{
+            <ListItem onClick={() => onReadEmail(email)} key={email._id} button style={{
               display: 'flex',
               justifyContent: 'flex-start',
             }}>

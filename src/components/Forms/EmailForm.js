@@ -3,7 +3,6 @@ import { OutlinedInput } from '../inputs';
 
 const EmailForm = (props) => {
   const { form, onEmailFormChange } = props;
-  console.log(props);
   return (
     <div style={{
       flex: 1,

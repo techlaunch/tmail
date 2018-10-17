@@ -27,8 +27,8 @@ const Routes = (props) => {
           <Route exact path="/awaiting-email-verification" render={(props) => !user ? <WaitingEmailVerificationScreen {...props} /> : <Redirect to="/home/emails" />} />
 
 
-          <Route path="/home/:screen" render={(props) => user ? <HomeScreen {...props} /> : <Redirect to="/sign-in" />} />
-          
+          <Route path="/home/:screen/:emailid?" render={(props) => user ? <HomeScreen {...props} /> : <Redirect to="/sign-in" />} />
+
           <Route path="/" render={(props) => user ? <Redirect to="/home/emails" /> : <Redirect to="/sign-in" /> }/>
         </Switch>
       </div>

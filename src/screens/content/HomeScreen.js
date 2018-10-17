@@ -6,7 +6,7 @@ import { FloatingButton } from '../../components/buttons';
 import { MdModeEdit } from 'react-icons/md';
 import { MdSend } from 'react-icons/md';
 import { MdDelete } from 'react-icons/md';
-import { EmailList } from '../../components/Emails';
+import { EmailList, EmailView } from '../../components/Emails';
 import { EmailForm } from '../../components/Forms';
 import { Redirect, Link } from "react-router-dom"; 
 import { EMAIL } from '../../actions';
@@ -32,6 +32,10 @@ class HomeScreen extends Component {
     }
   }
 
+  onReadEmail = (email) => {
+    this.props.history.push('/home/email/' + email._id)
+  }
+
   componentDidMount() {
     this.props.onFetchingEmails();
   }
@@ -53,9 +57,11 @@ class HomeScreen extends Component {
             (() => {
               switch (match.params.screen) {
                 case 'emails':
-                  return <EmailList user={user} emails={email.list}/>
+                  return <EmailList onReadEmail={this.onReadEmail} user={user} emails={email.list}/>
                 case 'new-email':
                   return <EmailForm onEmailFormChange={onEmailFormChange} form={this.props.email.form}/>
+                case 'email':
+                  return <EmailView user={user} emails={email.list} emailid={match.params.emailid} onEmailFormChange={onEmailFormChange}/>
                 default:
                   return <Redirect to="/home/emails" />
               }
@@ -107,7 +113,7 @@ class HomeScreen extends Component {
                     
                   )
                 default:
-                  return <Redirect to="/home/emails" />
+                  return null
               }
             })()
           }

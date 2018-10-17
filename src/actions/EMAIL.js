@@ -73,6 +73,11 @@ const EMAILS = (dispatch) => ({
             type: 'ON_ADD_EMAIL',
             email: response.email
           })
+
+          dispatch({
+            type: 'ON_EMAIL_FORM_CHANGE',
+            email: null
+          })
           return true;
         }
         else {
